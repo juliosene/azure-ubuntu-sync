@@ -47,8 +47,7 @@ chown -R $USERNAME.$USERNAME /home/$USERNAME/videos
 
 ## Prepare Azure server
 scp authorized_keys $AZUREUSER@$AZURESERVER:/home/$AZUREUSER/
-# ssh $AZUREUSER@$AZURESERVER "sudo useradd -m -s /bin/bash $USERNAME;echo $USERNAME:$USERPASSWORD |sudo chpasswd;sudo mkdir .ssh;sudo mv /home/$AZUREUSER/authorized_keys /home/$USERNAME/.ssh/;sudo chown -R $USERNAME.$USERNAME .ssh;sudo chmod 700 .ssh;sudo chmod 600 authorized_keys;sudo mkdir /home/$USERNAME/videos;sudo chown -R $USERNAME.$USERNAME /home/$USERNAME/videos;exit;"
-ssh $AZUREUSER@$AZURESERVER "sudo useradd -m -s /bin/bash $USERNAME;echo $USERNAME:$USERPASSWORD |sudo chpasswd;sudo mv /home/$AZUREUSER/authorized_keys /home/$USERNAME/.ssh/;sudo chown -R $USERNAME.$USERNAME .ssh;sudo chmod 700 .ssh;sudo chmod 600 authorized_keys;sudo mkdir /home/$USERNAME/videos;sudo chown -R $USERNAME.$USERNAME /home/$USERNAME/videos;exit;"
+ssh $AZUREUSER@$AZURESERVER "sudo useradd -m -s /bin/bash $USERNAME;echo $USERNAME:$USERPASSWORD |sudo chpasswd;sudo mkdir /home/$USERNAME/.ssh/;sudo mv /home/$AZUREUSER/authorized_keys /home/$USERNAME/.ssh/;sudo chown -R $USERNAME.$USERNAME /home/$USERNAME/.ssh/;sudo chmod 700 /home/$USERNAME/.ssh/;sudo chmod 600 /home/$USERNAME/.ssh/authorized_keys;sudo mkdir /home/$USERNAME/videos;sudo chown -R $USERNAME.$USERNAME /home/$USERNAME/videos;exit;"
 
 ## Create rsync
 apt-get install -y rsync
