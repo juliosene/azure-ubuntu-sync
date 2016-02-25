@@ -51,10 +51,10 @@ ssh $AZUREUSER@$AZURESERVER "sudo useradd -m -s /bin/bash $USERNAME;echo $USERNA
 
 ## Create rsync
 apt-get install -y rsync
-echo "* *     * * *   root    rsync -Cravzp -e 'ssh -i /home/$USERNAME/.ssh/id_rsa' /home/$USERNAME/videos/ $USERNAME@$AZURESERVER:/home/$USERNAME/videos/" >> /etc/crontab
+echo "* *     * * *   root    rsync -Cravzp --delete -e 'ssh -i /home/$USERNAME/.ssh/id_rsa' /home/$USERNAME/videos/ $USERNAME@$AZURESERVER:/home/$USERNAME/videos/" >> /etc/crontab
 
 ## Create samba file share
-apt-get install -s samba
+apt-get install -y samba
 sudo smbpasswd -a $USERNAME
 sudo cp /etc/samba/smb.conf ~
 echo -e "\n################## Video Share #################\n[AzureVideo]\npath = /home/$USERNAME/videos\nvalid users = $USERNAME\nread only = no" >> /etc/samba/smb.conf
