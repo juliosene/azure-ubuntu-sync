@@ -52,4 +52,4 @@ ssh $AZUREUSER@$AZURESERVER "sudo useradd -m -s /bin/bash $USERNAME;echo $USERNA
 
 ## Create rsync
 apt-get install -y rsync
-echo "* *     * * *   root    rsync -Cravzp -e 'ssh -i /home/$USERNAME/.ssh/id_rsa' /home/$USERNAME/videos/ $USERNAME@40.76.212.21:/home/$USERNAME/videos/" >> /etc/crontab
+echo "* *     * * *   root    rsync -Cravzp -e 'ssh -i /home/$USERNAME/.ssh/id_rsa' /home/$USERNAME/videos/ $USERNAME@$AZURESERVER:/home/$USERNAME/videos/" >> /etc/crontab
