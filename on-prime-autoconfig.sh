@@ -57,11 +57,5 @@ echo "* *     * * *   root    rsync -Cravzp -e 'ssh -i /home/$USERNAME/.ssh/id_r
 apt-get install -s samba
 sudo smbpasswd -a $USERNAME
 sudo cp /etc/samba/smb.conf ~
-echo -e '
-################## Video Share #################
-[AzureVideo]
-path = /home/$USERNAME/videos
-valid users = $USERNAME
-read only = no
-' >> /etc/samba/smb.conf
+echo -e "\n################## Video Share #################\n[AzureVideo]\npath = /home/$USERNAME/videos\nvalid users = $USERNAME\nread only = no" >> /etc/samba/smb.conf
 service smbd restart
