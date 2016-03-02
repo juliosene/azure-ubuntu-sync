@@ -1,3 +1,6 @@
+# First of all...
+# sudo apt-get install inotify-tools
+#
 USERNAME="videosync"
 inotifywait -m /home/$USERNAME/videos/ -e create -e moved_to -e close_write |
     while read path action file; do
